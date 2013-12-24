@@ -39,7 +39,7 @@ app.get('/*', function(req, res){
 /*db.createAcc("trev", "t@m", "bacon", function(){
   db.removeAllAcc();
 });*/
-app.listen(process.env.PORT || 3000);
+app.listen(3002);
 });
 
 var test = function(callback){
