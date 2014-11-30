@@ -19,14 +19,19 @@ db.joke = dbJoke.dbJoke();
 app.post('/*', function(req, res){
   var file = inline.getFile(req);
   if(file == "submitJoke"){
-    console.log(req.rawHeaders)
+    //console.log(req.rawHeaders)
     var auth = req.body.author.substring(0,50);
     if(auth==""){
       auth = "Anonymous"
     }
-    db.joke.createJoke(auth, req.body.joke.substring(0,255), new Date(), function(){
-      res.redirect('/');
-    });
+    var jokeText = req.body.joke.substring(0,255)
+    if(jokeText.indexOf("href") > -1 || jokeText.indexOf("http") > -1){
+      res.redirect('/html/err.html');
+    }else{
+      db.joke.createJoke(auth, jokeText, new Date(), function(){
+        res.redirect('/');
+      });
+    }
   }else{
     res.redirect('/html/err.html');
   }    
