@@ -19,6 +19,7 @@ db.joke = dbJoke.dbJoke();
 app.post('/*', function(req, res){
   var file = inline.getFile(req);
   if(file == "submitJoke"){
+    console.log(req.rawHeaders)
     var auth = req.body.author.substring(0,50);
     if(auth==""){
       auth = "Anonymous"

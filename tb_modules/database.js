@@ -1,4 +1,3 @@
-var bcrypt = require('bcrypt');
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var settings = require('../tb_modules/settings.js');
@@ -7,36 +6,6 @@ var settings = require('../tb_modules/settings.js');
 function tbDB(Account) {
 	this.Account = Account;
 
-	this.createAcc = function(fullName, email, password, callback) {
-		bcrypt.genSalt(10, function(err, salt) {
-		    bcrypt.hash(password, salt, function(err, hash) {
-		        // Store hash in your password DB.
-				var newAcc = new Account({
-					fullName: fullName,
-					email: email,
-					password: hash
-				});
-				newAcc.save(function(err, newAcc) {
-					Account.find(function(err, user) {
-						//console.log(user)
-						if(err) // TODO handle err
-						console.log("find error")
-					})
-					/*
-					Account.find({
-						email: /tbaron@uoguelph.ca/
-					}, function(err, docs) {
-						console.log(docs)
-					})*/
-					if(err){
-						err = "Account already exists"
-					}
-					callback(err);
-				})
-		    });
-		});
-
-	}
 
 	this.getAcc = function(email, callback) {
 		Account.findOne({

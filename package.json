@@ -11,8 +11,6 @@
 		"express": "x.x",
 		"mongodb": "x.x",
 		"validator": "x.x",
-		"bcrypt": "x.x",
-		"password-hash": "x.x",
 		"mongoose": "x.x",
 		"escape-html": "x.x"
 	}
