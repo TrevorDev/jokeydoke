@@ -8,7 +8,7 @@
   	},
 	"private": true,
 	"dependencies": {
-		"express": "x.x",
+		"express": "3.x",
 		"mongodb": "x.x",
 		"validator": "x.x",
 		"mongoose": "x.x",
